@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     DatabaseHelper mydb;
-    EditText editname,editsurname,editmarks;
-    Button BtnAdd,BtnView;
+    EditText editname,editsurname,editmarks,Editid;
+    Button BtnAdd,BtnView,BtnUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +25,16 @@ public class MainActivity extends AppCompatActivity {
         editname=findViewById(R.id.name);
         editsurname=findViewById(R.id.surname);
         editmarks=findViewById(R.id.marks);
+        Editid=findViewById(R.id.id);
 
         BtnAdd=findViewById(R.id.add);
         BtnView=findViewById(R.id.view);
-        AddData();
+        BtnUpdate=findViewById(R.id.update);
 
+        AddData();
+        ViewAll();
+
+        updateData();
     }
     public void ViewAll()
     {
@@ -78,6 +83,21 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(Message);
         builder.show();
+    }
+
+    public void updateData(){
+        BtnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isUpdated=mydb.updateData(Editid.getText().toString(),editname.getText().toString(),editsurname.getText().toString(),editmarks.getText().toString());
+                if (isUpdated==true){
+                    Toast.makeText(MainActivity.this,"Data Updated",Toast.LENGTH_LONG);
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Data not Updated",Toast.LENGTH_LONG);
+                }
+            }
+        });
     }
 
 }
