@@ -54,4 +54,11 @@
         android:text="Add Data"
         android:id="@+id/add"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Data"
+        android:id="@+id/view"/>
+
+
 </LinearLayout>
