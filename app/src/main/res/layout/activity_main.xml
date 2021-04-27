@@ -79,5 +79,11 @@
         android:text="Update Data"
         android:id="@+id/update"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Data"
+        android:id="@+id/delete"/>
+
 
 </LinearLayout>
