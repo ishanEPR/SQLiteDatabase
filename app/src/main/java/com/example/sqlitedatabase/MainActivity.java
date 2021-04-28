@@ -3,6 +3,7 @@ package com.example.sqlitedatabase;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     DatabaseHelper mydb;
     EditText editname,editsurname,editmarks,Editid;
-    Button BtnAdd,BtnView,BtnUpdate,BtnDelete;
+    Button BtnAdd,BtnView,BtnUpdate,BtnDelete,BtnSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,26 @@ public class MainActivity extends AppCompatActivity {
         BtnView=findViewById(R.id.view);
         BtnUpdate=findViewById(R.id.update);
         BtnDelete=findViewById(R.id.delete);
+        BtnSearch=findViewById(R.id.Search);
 
         AddData();
         ViewAll();
 
         updateData();
         deleteData();
+        search();
+
+    }
+
+    public void search()
+    {
+        BtnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,SearchView.class);
+                startActivity(intent);
+            }
+        });
     }
     public void ViewAll()
     {
